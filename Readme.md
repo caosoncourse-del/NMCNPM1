@@ -30,8 +30,8 @@ Mục tiêu là áp dụng quy trình phát triển phần mềm, từ **phân t
 ## 🚀 Cài đặt & chạy thử
 1. Clone repo:
    ```bash
-   git clone https://github.com/vancv43/[ten-repo].git
-   cd [ten-repo]
+   git clone https://github.com/caosoncourse-del/NMCNPM1.git
+   cd NMCNPM1
 
 
 Software Engineering Lab | Lecture – 01-05
