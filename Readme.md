@@ -1,14 +1,11 @@
-# 🛠️ Software Engineering Project – [Tên dự án]
+# 🛠️ Software Engineering Project – ATM Mini Project
 
 ## 📌 Giới thiệu
 Dự án này được phát triển trong môn **Nhập môn Công nghệ Phần mềm**.  
 Mục tiêu là áp dụng quy trình phát triển phần mềm, từ **phân tích yêu cầu, thiết kế, lập trình, kiểm thử và triển khai**.  
 
 ## 👥 Thành viên nhóm
-- Họ tên 1 – Vai trò (Leader, Developer, Tester, …)
-- Họ tên 2 – Vai trò
-- Họ tên 3 – Vai trò
-- Họ tên 4 – Vai trò  
+- Cao Nguyễn Anh Sơn / Developer
 
 ## 🎯 Use Case chính
 - Quản lý người dùng
