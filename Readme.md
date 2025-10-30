@@ -1,216 +1,325 @@
-# 🛠️ Software Engineering Project – ATM Mini Project
+# 🏨 Hotel Management System
 
-## 📌 Giới thiệu
-Dự án này được phát triển trong môn **Nhập môn Công nghệ Phần mềm**.  
-Mục tiêu là áp dụng quy trình phát triển phần mềm, từ **phân tích yêu cầu, thiết kế, lập trình, kiểm thử và triển khai**.  
+![Java Badge](https://img.shields.io/badge/Made%20with-Java-orange?style=for-the-badge&logo=openjdk)
+![MySQL Badge](https://img.shields.io/badge/Database-MySQL-blue?style=for-the-badge&logo=mysql)
+![GitHub License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge&logo=github)
+![Build Passing](https://img.shields.io/badge/Build-passing-brightgreen?style=for-the-badge&logo=githubactions)
+![Agile Scrum](https://img.shields.io/badge/Process-Agile%20Scrum-purple?style=for-the-badge&logo=jira)
+
+---
+
+## 📑 Table of Contents
+
+- [Giới thiệu](#-giới-thiệu)
+- [Công nghệ sử dụng](#-công-nghệ-sử-dụng)
+- [Thiết kế hệ thống](#-thiết-kế-hệ-thống)
+  - [Use Case Diagram](#use-case-diagram)
+  - [Sequence Diagram](#sequence-diagram)
+  - [ERD (Entity Relationship Diagram)](#erd-entity-relationship-diagram)
+  - [Class Diagram](#class-diagram)
+- [Cài đặt & chạy thử](#-cài-đặt--chạy-thử)
+- [Nhật ký Lab & Tiến độ](#-nhật-ký-lab--tiến-độ)
+
+---
+
+## 🏷️ Giới thiệu
+
+**Hotel Management System** là ứng dụng giúp quản lý các hoạt động của khách sạn bao gồm **đặt phòng, check-in/check-out, thanh toán và báo cáo doanh thu**.  
+Dự án được phát triển trong khuôn khổ môn **Nhập môn Công nghệ Phần mềm**, áp dụng quy trình **Agile – Scrum**.
+
+**Mục tiêu:** Áp dụng quy trình phát triển phần mềm đầy đủ, bao gồm:
+- Phân tích yêu cầu  
+- Thiết kế hệ thống  
+- Lập trình và kiểm thử  
+- Triển khai và báo cáo  
+
+Hệ thống cho phép quản lý toàn bộ hoạt động khách sạn như đặt phòng, check-in, dịch vụ và thanh toán.
+
+---
 
 ## 👥 Thành viên nhóm
-- Cao Nguyễn Anh Sơn / Developer
+- **Cao Nguyễn Anh Sơn** – Developer
 
-## 🎯 Use Case chính
-- Quản lý người dùng
-- Quản lý sản phẩm/dịch vụ
-- Xử lý giao dịch
-- Báo cáo & thống kê  
-
-(Sơ đồ use case có thể chèn hình ảnh vào đây)
-
-## 📐 Thiết kế hệ thống
-- **Use Case Diagram**: ![Use Case](./docs/usecase.png)
-- **Sequence Diagram**: ![Sequence](./docs/sequence.png)
-- **ERD (Entity Relationship Diagram)**: ![ERD](./docs/erd.png)
+---
 
 ## 💻 Công nghệ sử dụng
-- Ngôn ngữ: Java / Python / JavaScript / PHP
-- IDE: Visual Studio Code
-- CSDL: MySQL / PostgreSQL
-- Quản lý phiên bản: Git + GitHub
-- Mô hình phát triển: Agile – Scrum  
+
+| Thành phần | Công nghệ | Mô tả |
+|-------------|------------|-------|
+| **Ngôn ngữ** | Java / Python / JavaScript | Xử lý logic và giao diện |
+| **IDE** | Visual Studio Code / IntelliJ IDEA | Môi trường phát triển |
+| **CSDL** | MySQL | Lưu trữ thông tin khách sạn |
+| **Quản lý mã nguồn** | Git + GitHub | Lưu trữ, cộng tác, quản lý phiên bản |
+| **Mô hình phát triển** | Agile – Scrum | Tổ chức quy trình linh hoạt |
+
+---
+
+## 🧩 Thiết kế hệ thống
+
+Hệ thống **Hotel Management System** được thiết kế theo mô hình **MVC (Model – View – Controller)**:
+
+- **Model**: Quản lý dữ liệu khách hàng, phòng, đặt phòng, hóa đơn.  
+- **View**: Giao diện hiển thị (HTML/CSS/JavaFX hoặc Web UI).  
+- **Controller**: Xử lý logic nghiệp vụ như đặt phòng, check-in/check-out, thanh toán.
+
+### 🧱 Kiến trúc hệ thống
+
+```mermaid
+flowchart TD
+A[Người dùng] --> B[Giao diện (View)]
+B --> C[Controller]
+C --> D[CSDL MySQL]
+D --> C
+C --> B
+```
+
+---
+
+### Use Case Diagram
+
+```mermaid
+graph TD
+A[Khách hàng] -->|Đặt phòng| B(Hệ thống)
+A -->|Check-in / Check-out| B
+A -->|Thanh toán| B
+A -->|Xem báo cáo| B
+```
+
+---
+
+### Sequence Diagram
+*(mô tả luồng tương tác giữa Actor – Boundary – Control – Entity)*
+
+```mermaid
+sequenceDiagram
+actor KhachHang
+participant GiaoDien
+participant DatPhongController
+participant PhongDAO
+participant CSDL
+
+KhachHang->>GiaoDien: Nhập thông tin đặt phòng
+GiaoDien->>DatPhongController: Gửi yêu cầu đặt phòng
+DatPhongController->>PhongDAO: Kiểm tra phòng trống
+PhongDAO->>CSDL: Truy vấn danh sách phòng
+CSDL-->>PhongDAO: Trả kết quả phòng trống
+PhongDAO-->>DatPhongController: Danh sách phòng trống
+DatPhongController-->>GiaoDien: Hiển thị kết quả
+```
+
+---
+
+### ERD (Entity Relationship Diagram)
+*(mô hình quan hệ dữ liệu – MySQL)*
+
+```mermaid
+erDiagram
+    KHACHHANG {
+        string maKH
+        string tenKH
+        string cmnd
+        string sdt
+    }
+    PHONG {
+        string maPhong
+        string loaiPhong
+        double donGia
+        string trangThai
+    }
+    DATPHONG {
+        int maDatPhong
+        date ngayDen
+        date ngayDi
+        string maKH
+        string maPhong
+    }
+    HOADON {
+        int maHD
+        double tongTien
+        string maDatPhong
+    }
+
+    KHACHHANG ||--o{ DATPHONG : dat
+    PHONG ||--o{ DATPHONG : duoc_dat
+    DATPHONG ||--|| HOADON : tao_ra
+```
+
+---
+
+### Class Diagram
+
+```mermaid
+classDiagram
+class Phong {
+  - maPhong : String
+  - trangThai : String
+  + kiemTraTrong() : boolean
+  + capNhatTrangThai(newStatus:String)
+}
+
+class LoaiPhong {
+  - maLoai : String
+  - tenLoai : String
+  - donGia : double
+}
+
+class KhachHang {
+  - maKH : String
+  - tenKH : String
+  - cmnd : String
+}
+
+class DatPhong {
+  - maDatPhong : int
+  - ngayDen : Date
+  - ngayDi : Date
+  + checkIn()
+  + checkOut()
+}
+
+class HoaDon {
+  - maHD : int
+  - tongTien : double
+  + tinhTienPhong() : double
+}
+
+LoaiPhong "1" -- "n" Phong
+KhachHang "1" -- "n" DatPhong
+Phong "1" -- "n" DatPhong
+DatPhong "1" -- "1" HoaDon
+```
+
+---
 
 ## 🚀 Cài đặt & chạy thử
-1. Clone repo:
-   ```bash
-   git clone https://github.com/caosoncourse-del/NMCNPM1.git
-   cd NMCNPM1
 
+```bash
+# Clone repository
+git clone https://github.com/caosoncourse-del/NMCNPM1.git
+cd NMCNPM1
 
-Software Engineering Lab | Lecture – 01-05
+# Cài đặt cơ sở dữ liệu
+# (Chi tiết xem tại docs/DATABASE.md)
 
-Lab 01 – Thiết lập môi trường & Quản lý dự án trên GitHub
-•	Mục tiêu: Sinh viên làm quen với GitHub, Git, và công cụ lập trình.
-•	Nội dung:
-o	Tạo tài khoản GitHub, tạo repository riêng cho môn học.
-o	Cấu hình Git (clone, commit, push, pull).
-o	Cập nhật profile cá nhân trên README.md.
-o	Upload bài tập đơn giản: file text giới thiệu bản thân.
- 
-Lab 02 – Phân tích yêu cầu & Thiết kế Use Case
-•	Mục tiêu: Sinh viên học cách mô tả yêu cầu hệ thống bằng UML.
-•	Nội dung:
-o	Chọn Mini Project (ví dụ: hệ thống quản lý đặt phòng khách sạn, hệ thống bán hàng online).
-o	Vẽ Use Case Diagram mô tả chức năng chính và các tác nhân.
-o	Viết Use Case Description cho ít nhất 2 chức năng quan trọng.
-o	Upload bản vẽ (dạng ảnh hoặc file .drawio) lên GitHub.
- 
-Lab 03 – UML Thiết kế (Use case-UC, Sequence Diagram-SQ)
-•	Mục tiêu: Sinh viên mô tả luồng tương tác chi tiết của hệ thống.
-•	Nội dung:
-o	Dựa trên  ATM Mini Project, vẽ  UC, SQ cho một quy trình nghiệp vụ.
-o	Giải thích các đối tượng tham gia và thông điệp trao đổi.
-o	Upload diagram lên GitHub cùng file mô tả.
- 
-Lab 04 – Coding giao diện đăng nhập (Form Login)
-•	Mục tiêu: Sinh viên áp dụng kỹ năng lập trình front-end cơ bản.
-•	Nội dung:
-o	Dùng Visual Studio Code viết một form login bằng HTML, CSS, JavaScript.
-o	Yêu cầu: có input Username/Password, nút Login, Cancel, Remember me.
-o	Thực hiện kiểm tra dữ liệu nhập cơ bản bằng JavaScript.
-o	Đưa source code lên GitHub và chạy demo.
- 
-Lab 05 – Tích hợp, quản lý & báo cáo
-•	Mục tiêu: Hoàn thiện quy trình phần mềm từ thiết kế đến triển khai.
-•	Nội dung:
-o	Gom tất cả các artifacts (Use Case, Sequence, Form Login code).
-o	Tạo Project Report (Markdown hoặc PDF) mô tả quy trình làm việc.
-o	Hướng dẫn push code, update readme, tạo tag version v1.0.
-o	Nộp link repo GitHub để giáo viên review.
-Lab 06 – Thiết kế chi tiết lớp & kiến trúc ATM
-Mục tiêu: từ Use Case và Sequence, sinh viên thiết kế Class Diagram và Package Diagram cho ATM.
-Công cụ: PlantUML/draw.io, VS Code.
-Các bước
-1.	Thư mục: /labs/lab06-atm-class/.
-2.	Tạo class-atm.puml:
-@startuml
-class ATM {
-  - atmId : int
-  - location : String
-  - cashLevel : double
-  + authenticate(card:Card, pin:String) : boolean
-  + withdraw(card:Card, amount:double) : Transaction
-  + deposit(card:Card, amount:double) : Transaction
-  + transfer(from:Account, to:Account, amount:double) : Transaction
-}
+# Chạy ứng dụng
+# (Hướng dẫn chi tiết trong docs/INSTALL.md)
+```
 
-class Card {
-  - cardNo : String
-  - pinHash : String
-  - status : String
-}
+---
 
-class Account {
-  - accountNo : String
-  - balance : double
-  + debit(amount:double)
-  + credit(amount:double)
-}
+## 🧪 Nhật ký Lab & Tiến độ
 
-class Transaction {
-  - txId : int
-  - type : String
-  - amount : double
-  - time : DateTime
-  - status : String
-}
+### 🧩 Lab 01 – Thiết lập môi trường & Quản lý dự án
+**Mục tiêu:** Làm quen với Git, GitHub và công cụ lập trình.
 
-ATM --> Card
-ATM --> Transaction
-Card --> Account
-Account --> Transaction
-@enduml
-3.	Vẽ package diagram: UI, Controller, BankService, Hardware.
-4.	Export PNG, ghi chú.
-Phải nộp: class-atm.puml/png, package-diagram.puml/png, notes.md.
-Rubric (10đ): đủ lớp & quan hệ (5), thuộc tính/phương thức đúng (3), tài liệu & repo (2).
- 
-Lab 07 – Phát triển Module Rút tiền (Prototype Java/Python)
-Mục tiêu: viết module code mô phỏng Withdraw trong ATM.
-Công cụ: Java hoặc Python + MySQL connector.
-Các bước
-1.	Thư mục: /labs/lab07-withdraw-module/.
-2.	Code Python (ví dụ):
-import mysql.connector, hashlib
+- Tạo tài khoản GitHub, repository riêng.  
+- Cấu hình Git (clone, commit, push, pull).  
+- Upload bài tập giới thiệu bản thân.
 
-def verify_pin(card_no, pin):
-    conn = mysql.connector.connect(user="root", password="123456", database="atm_demo")
-    cur = conn.cursor()
-    cur.execute("SELECT pin_hash FROM cards WHERE card_no=%s", (card_no,))
-    row = cur.fetchone()
-    conn.close()
-    return row and row[0] == hashlib.sha256(pin.encode()).hexdigest()
+---
 
-def withdraw(card_no, amount):
-    conn = mysql.connector.connect(user="root", password="123456", database="atm_demo")
+### 📊 Lab 02 – Phân tích yêu cầu & Thiết kế Use Case
+**Mục tiêu:** Mô tả yêu cầu hệ thống bằng UML.
+
+- Chọn project: **Hotel Management System**  
+- Vẽ Use Case Diagram và viết Use Case Description.  
+- Upload diagram (.png hoặc .drawio).
+
+---
+
+### 🧠 Lab 03 – UML Thiết kế (Use Case & Sequence)
+**Mục tiêu:** Diễn tả luồng tương tác chi tiết trong hệ thống.
+
+- Vẽ Use Case Diagram, Sequence Diagram cho quy trình Đặt phòng.  
+- Giải thích Actor, Boundary, Control, Entity.
+
+---
+
+### 💻 Lab 04 – Coding giao diện đăng nhập
+**Mục tiêu:** Áp dụng kỹ năng lập trình front-end.
+
+- Tạo Form Login (HTML/CSS/JS hoặc JavaFX).  
+- Input: Username, Password + nút Login/Cancel.  
+- Kiểm tra dữ liệu nhập hợp lệ.
+
+---
+
+### 🧱 Lab 05 – Tích hợp, quản lý & báo cáo
+**Mục tiêu:** Hoàn thiện quy trình phần mềm từ thiết kế đến triển khai.
+
+- Gom tất cả các artifacts (UML, code, form).  
+- Viết Project Report mô tả quy trình làm việc.  
+- Tạo tag version `v1.0`, cập nhật README.
+
+---
+
+### 🏗️ Lab 06 – Thiết kế lớp & kiến trúc hệ thống
+**Mục tiêu:** Thiết kế Class Diagram và Package Diagram.
+
+- Sử dụng PlantUML / draw.io / VS Code.
+
+---
+
+### 🧱 Lab 07 – Phát triển Module Đặt phòng (Booking)
+**Ngôn ngữ:** Java hoặc Python + MySQL connector.
+
+```python
+import mysql.connector, datetime
+
+def kiem_tra_phong(maLoaiPhong, ngayDen, ngayDi):
+    print(f"Kiểm tra phòng loại {maLoaiPhong} từ {ngayDen} đến {ngayDi}")
+    return "P101"  # ví dụ có phòng trống
+
+def dat_phong(maKH, maLoaiPhong, ngayDen, ngayDi):
+    conn = mysql.connector.connect(user="root", password="123456", database="hotel_demo")
     cur = conn.cursor()
     try:
         conn.start_transaction()
-        cur.execute("SELECT account_id, balance FROM accounts JOIN cards USING(account_id) WHERE card_no=%s FOR UPDATE",(card_no,))
-        account_id,balance = cur.fetchone()
-        if balance < amount:
-            raise Exception("Insufficient funds")
-        cur.execute("UPDATE accounts SET balance=balance-%s WHERE account_id=%s",(amount,account_id))
-        cur.execute("INSERT INTO transactions(account_id,card_no,atm_id,tx_type,amount,balance_after) VALUES(%s,%s,1,'WITHDRAW',%s,%s)",(account_id,card_no,amount,balance-amount))
+        phong_trong = kiem_tra_phong(maLoaiPhong, ngayDen, ngayDi)
+        if not phong_trong:
+            raise Exception("Hết phòng trống")
+        cur.execute("UPDATE Phong SET trangThai='DaDat' WHERE maPhong=%s", (phong_trong,))
+        cur.execute("INSERT INTO DatPhong(maKH, maPhong, ngayDen, ngayDi, trangThai) VALUES(%s, %s, %s, %s, 'PENDING')",
+                    (maKH, phong_trong, ngayDen, ngayDi))
         conn.commit()
-        print("Withdraw success")
+        print(f"Đặt phòng {phong_trong} cho khách {maKH} thành công.")
     except Exception as e:
         conn.rollback()
-        print("Error:", e)
+        print(f"Lỗi đặt phòng: {e}")
     finally:
         conn.close()
-3.	Test rút tiền với card_no demo.
-Phải nộp: mã nguồn, ảnh màn hình chạy.
-Rubric (10đ): kết nối DB đúng (3), xử lý giao dịch (3), kiểm tra số dư (2), log transaction (2).
- 
-Lab 08 – Kiểm thử ATM (Unit test & Integration test)
-Mục tiêu: thực hành Unit Test và Integration Test module ATM.
-Công cụ: Python (pytest) hoặc Java (JUnit), Selenium (cho form Login).
-Các bước
-1.	Thư mục: /labs/lab08-testing/.
-2.	Viết unit test cho hàm verify_pin và withdraw.
-o	Test case: PIN đúng/sai, đủ tiền/không đủ tiền.
-3.	Viết integration test với Form Login (Lab 04) bằng Selenium.
-o	Test case: login thành công, login sai, empty input.
-4.	Lưu test_withdraw.py, selenium_test_login.py.
-5.	Chạy test → export report.
-Phải nộp: source test + ảnh pass/fail.
-Rubric (10đ): unit test đủ case (4), integration test form login (4), báo cáo (2).
- 
-Lab 09 – Quản lý dự án ATM trên Jira (Agile)
-Mục tiêu: mô phỏng quản lý phát triển ATM system bằng Scrum.
-Công cụ: Jira/ClickUp/Trello.
-Các bước
-1.	Tạo project “ATM System”.
-2.	Tạo Epic: “ATM Basic Functions”.
-3.	Tạo User Stories:
-o	US1: Là khách hàng, tôi muốn rút tiền.
-o	US2: Là khách hàng, tôi muốn kiểm tra số dư.
-o	US3: Là khách hàng, tôi muốn chuyển khoản.
-o	US4: Là kỹ thuật viên, tôi muốn bảo trì.
-4.	Phân rã thành Tasks/Subtasks (ví dụ: thiết kế UI, viết code, test).
-5.	Lập Sprint 1 (2 tuần): Rút tiền + Xem số dư.
-6.	Giao việc → chụp màn hình: Backlog, Board, Burndown.
-Phải nộp: file report (.pdf hoặc .md) với ảnh chụp Jira.
-Rubric (10đ): backlog đầy đủ (3), sprint board (3), báo cáo sprint (2), evidence hình ảnh (2).
- 
-Lab 10 – Báo cáo tổng hợp & Demo cuối kỳ
-Mục tiêu: tổng hợp tất cả lab trước thành Mini Project ATM.
-Công cụ: GitHub, PowerPoint/Markdown.
-Các bước
-1.	Thư mục: /labs/lab10-final-demo/.
-2.	Gom toàn bộ artifacts:
-o	Use Case (Lab 02)
-o	Sequence (Lab 03)
-o	Class Diagram (Lab 06)
-o	ERD + DB (Lab 05)
-o	Form Login (Lab 04)
-o	Withdraw module (Lab 07)
-o	Test (Lab 08)
-o	Jira report (Lab 09)
-3.	Viết báo cáo final-report.md:
-o	Giới thiệu ATM mini-project
-o	Mô hình UML
-o	Database & code minh hoạ
-o	Kết quả test & sprint report
-o	Kết luận & định hướng mở rộng
-4.	Demo trên lớp: chạy form login → withdraw demo kết nối DB → trình bày Jira board.
-Phải nộp: final-report.md, slide PPT (nếu có), link repo GitHub.
-Rubric (10đ): tích hợp đầy đủ (4), chạy demo được (3), báo cáo & trình bày (3).
+```
+
+---
+
+### 🧪 Lab 08 – Kiểm thử (Unit & Integration)
+**Công cụ:** PyTest / JUnit / Selenium
+
+- Viết test cho `kiem_tra_phong()` và `dat_phong()`.  
+- Test login form (Lab 04) bằng Selenium.  
+- Xuất báo cáo pass/fail.
+
+---
+
+### 📋 Lab 09 – Quản lý dự án trên Jira (Agile)
+**Mục tiêu:** Mô phỏng phát triển phần mềm bằng Scrum.
+
+- Tạo Project Jira: “Hotel Management System”  
+- Epic: Quản lý Lưu trú Khách hàng  
+- User Stories: Đặt phòng, Check-in, Check-out, Báo cáo.  
+- Sprint 1: 2 tuần – Đặt phòng & Check-in.  
+- Chụp ảnh Backlog, Board, Burndown Chart.
+
+---
+
+### 🎓 Lab 10 – Báo cáo tổng hợp & Demo cuối kỳ
+**Mục tiêu:** Tổng hợp tất cả các lab thành Mini Project hoàn chỉnh.
+
+- Thu thập tất cả artifact: UML, ERD, Form, Module, Test, Jira.  
+- Viết `final-report.md` mô tả dự án.  
+- Demo form Login → Đặt phòng → Thanh toán → Báo cáo.  
+- Nộp: `final-report.md`, slide PPT, link repo GitHub.
+
+---
+
+<p align="center">💡 <b>Hotel Management System – Từ phân tích đến triển khai hoàn chỉnh!</b></p>
