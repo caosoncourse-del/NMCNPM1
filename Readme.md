@@ -37,10 +37,10 @@ Hệ thống cho phép quản lý toàn bộ hoạt động khách sạn như đ
 
 ---
 
-## 👥 Thành viên nhóm
+## 👥 Thông tin sinh viên
 - Họ và tên: **Cao Nguyễn Anh Sơn**
-- MSSV: **B24DTCN496**
-- LỚP: **D24TXCN12-B**
+- Mssv: **B24DTCN496**
+- Lớp: **D24TXCN12-B**
 
 ---
 
