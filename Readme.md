@@ -66,12 +66,11 @@ Hệ thống **Hotel Management System** được thiết kế theo mô hình **
 
 ```mermaid
 flowchart TD
-A[Người dùng] --> B[Giao diện (View)]
-B --> C[Controller]
-C --> D[CSDL MySQL]
-D --> C
-C --> B
-```
+    A[Người dùng] --> B[Giao diện Web (View)]
+    B --> C[Controller (Java/Python)]
+    C --> D[Cơ sở dữ liệu MySQL]
+    D --> C
+    C --> B
 
 ---
 
