@@ -38,7 +38,9 @@ Hệ thống cho phép quản lý toàn bộ hoạt động khách sạn như đ
 ---
 
 ## 👥 Thành viên nhóm
-- **Cao Nguyễn Anh Sơn** – Developer
+- Họ và tên: **Cao Nguyễn Anh Sơn**
+- MSSV: **B24DTCN496**
+- LỚP: **D24TXCN12-B**
 
 ---
 
