@@ -78,10 +78,10 @@ C --> B
 
 ```mermaid
 graph TD
-A[Khách hàng] -->|Đặt phòng| B(Hệ thống)
+A[KhachHang] -->|ĐatPhong| B(HeThong)
 A -->|Check-in / Check-out| B
-A -->|Thanh toán| B
-A -->|Xem báo cáo| B
+A -->|ThanhToan| B
+A -->|XemBaoCao| B
 ```
 
 ---
