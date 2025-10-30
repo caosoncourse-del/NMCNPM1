@@ -62,7 +62,7 @@ Hệ thống **Hotel Management System** được thiết kế theo mô hình **
 - **View**: Giao diện hiển thị (HTML/CSS/JavaFX hoặc Web UI).  
 - **Controller**: Xử lý logic nghiệp vụ như đặt phòng, check-in/check-out, thanh toán.
 
-### 🧱 Kiến trúc hệ thống
+### 🧱 Kiến trúc hệ thống (Mermaid)
 
 ```mermaid
 flowchart TD
