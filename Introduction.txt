@@ -1,0 +1,75 @@
+# 📝 Giới thiệu
+
+Chào mừng bạn đến với **Bộ bài tập Thực hành NMCNPM1 (Nhập môn Công nghệ Phần mềm)**!
+Kho lưu trữ này được thiết kế để hỗ trợ sinh viên **làm quen với lập trình, kiểm thử, và quy trình phát triển phần mềm cơ bản**. Nội dung sẽ được cập nhật dần theo từng lab để đảm bảo trải nghiệm học tập toàn diện.
+
+---
+
+## 🧩 Cấu trúc thư mục
+
+```
+/lab01/  
+/lab02/  
+/lab03/  
+...  
+/lab10/
+```
+
+Mỗi thư mục (lab) sẽ bao gồm:
+
+* 📄 **Mô tả bài tập** (sẽ được bổ sung)
+* 💻 **Mã nguồn hoặc dữ liệu liên quan**
+* 📊 **Kết quả thực hành hoặc báo cáo**
+
+---
+
+## 🎯 Mục tiêu
+
+* Rèn luyện **kỹ năng lập trình** và **làm việc nhóm**
+* Làm quen với **quy trình phát triển phần mềm**
+* Áp dụng **Git, GitHub, IDE, và phương pháp kiểm thử**
+* Phát triển **tư duy hệ thống** và **kỹ năng giải quyết vấn đề**
+
+---
+
+## 🧠 Hướng dẫn sử dụng
+
+1. **Tải kho lưu trữ về máy:**
+
+```bash
+git clone https://github.com/caosoncourse-del/NMCNPM1.git
+```
+
+2. **Di chuyển vào thư mục lab:**
+
+```bash
+cd Lab
+```
+
+3. **Chọn một lab để bắt đầu:**
+
+```bash
+cd Lab01
+```
+
+> Nội dung chi tiết từng bài lab sẽ được cập nhật liên tục.
+
+---
+
+## 📚 Ghi chú
+
+* Dự án vẫn đang trong quá trình hoàn thiện.
+* Nội dung các lab (mục tiêu, yêu cầu, hướng dẫn) sẽ được cập nhật theo thời gian.
+* Các bản cập nhật sẽ được thông báo trực tiếp tại repository.
+
+---
+
+## 🧾 Tác giả
+
+**caosoncourse-del**
+
+🌐 GitHub: [https://github.com/caosoncourse-del](https://github.com/caosoncourse-del)
+
+---
+
+© 2025 — Bộ bài tập Thực hành NMCNPM1. Giữ toàn quyền.
