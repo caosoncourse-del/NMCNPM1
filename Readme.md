@@ -66,11 +66,11 @@ Hệ thống **Hotel Management System** được thiết kế theo mô hình **
 
 ```mermaid
 flowchart TD
-A[User] --> B[Web Interface (View)]
-B --> C[Controller (PHP)]
-C --> D[Database (MySQL)]
-D --> C
-C --> B
+    A[User] --> B[Web Interface (View)]
+    B --> C[Controller (PHP)]
+    C --> D[(MySQL Database)]
+    D --> C
+    C --> B
 
 ---
 
@@ -78,10 +78,10 @@ C --> B
 
 ```mermaid
 graph TD
-A[KhachHang] -->|ĐatPhong| B(HeThong)
-A -->|Check-in / Check-out| B
-A -->|ThanhToan| B
-A -->|XemBaoCao| B
+    A[Khách hàng] -->|Đặt phòng| B(Hệ thống)
+    A -->|Check-in / Check-out| B
+    A -->|Thanh toán| B
+    A -->|Xem báo cáo| B
 ```
 
 ---
