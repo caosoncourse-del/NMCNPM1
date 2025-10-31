@@ -12,6 +12,7 @@
 
 - [Giới thiệu](#-giới-thiệu)
 - [Công nghệ sử dụng](#-công-nghệ-sử-dụng)
+- [Cấu trúc thư mục dự án](#-cấu-trúc-thư-mục-dự-án)
 - [Thiết kế hệ thống](#-thiết-kế-hệ-thống)
   - [Use Case Diagram](#use-case-diagram)
   - [Sequence Diagram](#sequence-diagram)
@@ -19,6 +20,7 @@
   - [Class Diagram](#class-diagram)
 - [Cài đặt & chạy thử](#-cài-đặt--chạy-thử)
 - [Nhật ký Lab & Tiến độ](#-nhật-ký-lab--tiến-độ)
+
 
 ---
 
@@ -53,6 +55,39 @@ Hệ thống cho phép quản lý toàn bộ hoạt động khách sạn như đ
 | **CSDL** | MySQL | Lưu trữ thông tin khách sạn |
 | **Quản lý mã nguồn** | Git + GitHub | Lưu trữ, cộng tác, quản lý phiên bản |
 | **Mô hình phát triển** | Agile – Scrum | Tổ chức quy trình linh hoạt |
+
+---
+
+## 📂 Cấu trúc thư mục dự án
+
+```
+── docs/
+│   ├── usecase.png
+│   ├── sequence.png
+│   └── erd.png
+│
+├── labs/
+│   ├── lab01/
+│   ├── lab02/
+│   ├── lab03/
+│   ├── lab04/
+│   ├── lab05/
+│   ├── lab06/
+│   ├── lab07/
+│   ├── lab08/
+│   ├── lab09/
+│   └── lab10/
+│
+├── src/
+│   ├── atm.py
+│   ├── card.py
+│   ├── account.py
+│   └── transaction.py
+│
+├── config.py
+├── Introduction.txt
+└── README.md
+```
 
 ---
 
@@ -321,7 +356,5 @@ def dat_phong(maKH, maLoaiPhong, ngayDen, ngayDi):
 - Viết `final-report.md` mô tả dự án.  
 - Demo form Login → Đặt phòng → Thanh toán → Báo cáo.  
 - Nộp: `final-report.md`, slide PPT, link repo GitHub.
-
----
 
 <p align="center">💡 <b>Hotel Management System – Từ phân tích đến triển khai hoàn chỉnh!</b></p>
